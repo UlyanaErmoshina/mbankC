@@ -21,11 +21,12 @@ class MobileBankApiTestV3 {
       // Проверки
       .then()
           .statusCode(200)
-              .body(matchesJsonSchemaInClasspath("accounts.schema.json"))
+           .body(matchesJsonSchemaInClasspath("accounts.schema.json"))
+
           // специализированные проверки - лучше
           .contentType(ContentType.JSON)
           .body("", hasSize(3))
-          .body("[0].currency", equalTo("RUB"))
+          .body("[0].currency", equalTo("RUR"))
           .body("[0].balance", greaterThanOrEqualTo(0))
       ;
     }
